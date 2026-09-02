@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { Play, LayoutDashboard, Video, ChartColumn, Globe, Settings } from "lucide-react"
 
@@ -29,8 +30,9 @@ export function Sidebar({ initialActive = "dashboard" }: { initialActive?: strin
           const Icon = item.icon
           const isActive = active === item.key
           return (
-            <button
+            <Link
               key={item.key}
+              href={item.key === "dashboard" ? "/dashboard" : `/${item.key}`}
               onClick={() => setActive(item.key)}
               className={cn(
                 "flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
@@ -42,7 +44,7 @@ export function Sidebar({ initialActive = "dashboard" }: { initialActive?: strin
             >
               <Icon className="h-4.5 w-4.5 shrink-0" />
               {item.label}
-            </button>
+            </Link>
           )
         })}
       </nav>
