@@ -12,8 +12,8 @@ const nav = [
   { label: "Settings", icon: Settings, key: "settings" },
 ]
 
-export function Sidebar() {
-  const [active, setActive] = useState("dashboard")
+export function Sidebar({ initialActive = "dashboard" }: { initialActive?: string }) {
+  const [active, setActive] = useState(initialActive)
 
   return (
     <aside className="fixed inset-y-0 left-0 z-30 hidden w-60 flex-col bg-sidebar text-sidebar-foreground lg:flex">
